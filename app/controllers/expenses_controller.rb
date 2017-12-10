@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @expenses = Expense.order("date DESC").concepto("%#{params[:concept]}%").id("%#{params[:category_id]}%")
     # @expenses = Expense.where("concept like ?", "%#{params[:concept]}%")
